@@ -154,7 +154,8 @@ class GroupManager
                     $groups[] = $group;
                 }
 
-                if (str_starts_with($filename . ':' . $testName, (string)$testPattern)) {
+                $testPattern = "/" . str_replace("/", "\\/", $testPattern) . "/";
+                if (preg_match($testPattern, ($filename . ':' . $testName))) {
                     $groups[] = $group;
                 }
                 if (
